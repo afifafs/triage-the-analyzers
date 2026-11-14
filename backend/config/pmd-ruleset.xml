@@ -13,5 +13,12 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
     <description>PMD quickstart, with Project Pulse's decisions.</description>
     <rule ref="rulesets/java/quickstart.xml">
+        <!-- JPA requires no-argument entity constructors, while other empty constructors are
+             often framework entry points; requiring comments or removing them adds boilerplate. -->
+        <exclude name="UncommentedEmptyConstructor"/>
+        <exclude name="UnnecessaryConstructor"/>
+        <!-- Guarding these logging calls only skips inexpensive getters; the team accepts that
+             small cost to keep error and diagnostic paths straightforward. -->
+        <exclude name="GuardLogStatement"/>
     </rule>
 </ruleset>

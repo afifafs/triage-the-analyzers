@@ -7,4 +7,9 @@
 
      Unlike the baseline, this file may grow, but every entry is a reviewed decision. -->
 <FindBugsFilter>
+    <!-- Project Pulse deliberately shares mutable JPA associations for Hibernate tracking and
+         constructor-injected Spring beans for dependency injection; defensive copies would change
+         those framework-managed semantics. -->
+    <Match><Bug pattern="EI_EXPOSE_REP"/></Match>
+    <Match><Bug pattern="EI_EXPOSE_REP2"/></Match>
 </FindBugsFilter>
